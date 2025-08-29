@@ -1,0 +1,4 @@
+variable "sql_database_name" {}
+variable "server_id" {}
+variable "max_size_gb" {}
+variable "tags" {}
