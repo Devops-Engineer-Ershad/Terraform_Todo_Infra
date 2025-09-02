@@ -8,7 +8,6 @@ permissions:
 jobs: 
   terraform-init-plan:
     runs-on: self-hosted
-    environment: dev
     steps:    
       - name: Checkout
         uses: actions/checkout@v5.0.0
@@ -19,3 +18,52 @@ jobs:
           tenant-id: beb0c4c1-6e0d-47ae-9e96-267a17908122
           subscription-id: 52172e85-52db-422d-b74e-9204936ad848
           
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+        working-directory: environments/dev
+        
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+        working-directory: environments/dev
+        
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+        working-directory: environments/dev
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color -input=false
+        continue-on-error: true
+        working-directory: environments/dev
+        
+  terraform-apply: 
+    runs-on: self-hosted
+    needs: terraform-init-plan
+    environment: dev
+    steps:    
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+        
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: 2d77700a-f1d8-4aab-afa3-1dce8f432f0e
+          tenant-id: beb0c4c1-6e0d-47ae-9e96-267a17908122
+          subscription-id: 52172e85-52db-422d-b74e-9204936ad848
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false  
+        working-directory: environments/dev
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply --auto-approve
+        continue-on-error: true
+        working-directory: environments/dev   
+          
+
