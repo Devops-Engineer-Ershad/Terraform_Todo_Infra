@@ -1,18 +1,20 @@
-name: "dhondhu maharaj"
+name: "Deployment of Infra Pipeline"
 
-on:
-  push:
-    branches:
-      - 'feature/**'
-      - 'main'
-      - 'hotfix/**'
+on: workflow_dispatch
 
-jobs:
-  DhondhuMaharaj:
-    name: dhondhu-maharaj
-    runs-on: GitHubAnchors
-    steps:
-      - name: Dhondhu Maharaj Rocks!
-        run: echo "Dhondhu Maharaj"
-
-     
+permissions:
+  id-token: write
+  contents: read
+jobs: 
+  terraform-init-plan:
+    runs-on: self-hosted
+    steps:    
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: 2d77700a-f1d8-4aab-afa3-1dce8f432f0e
+          tenant-id: beb0c4c1-6e0d-47ae-9e96-267a17908122
+          subscription-id: 52172e85-52db-422d-b74e-9204936ad848
+          
