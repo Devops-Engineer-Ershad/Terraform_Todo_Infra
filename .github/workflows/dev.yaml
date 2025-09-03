@@ -47,7 +47,7 @@ jobs:
           tflint
         working-directory: environments/dev
 
-       - name: Run tfsec
+      - name: Run tfsec
         run: tfsec
         working-directory: environments/dev    
         
