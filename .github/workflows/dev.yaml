@@ -41,16 +41,15 @@ jobs:
         continue-on-error: true
         working-directory: environments/dev
 
-      - name: Run tfsec
-        run: tfsec
-        working-directory: environments/dev
-
       - name: Run tflint
         run: |
           tflint --init
           tflint
         working-directory: environments/dev
-     
+
+       - name: Run tfsec
+        run: tfsec
+        working-directory: environments/dev    
         
   terraform-apply: 
     runs-on: self-hosted
