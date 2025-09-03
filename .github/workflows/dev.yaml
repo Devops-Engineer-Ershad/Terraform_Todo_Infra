@@ -41,24 +41,15 @@ jobs:
         continue-on-error: true
         working-directory: environments/dev
 
-      - name: Install tfsec
-        run: |
-          curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
-          tfsec --version
-
       - name: Run tfsec
         run: tfsec
         working-directory: environments/dev
 
-      - name: Install tflint
-        run: |
-          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
-          tflint --version
-
       - name: Run tflint
-        run: tflint --init && tflint
+        run: |
+          tflint --init
+          tflint
         working-directory: environments/dev
-
      
         
   terraform-apply: 
