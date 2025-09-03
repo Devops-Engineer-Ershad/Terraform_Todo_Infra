@@ -20,11 +20,9 @@ jobs:
           subscription-id: 52172e85-52db-422d-b74e-9204936ad848
           
       - name: Terraform fmt
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: true
+        run: terraform fmt -recursive
         working-directory: environments/dev
-        
+
       - name: Terraform Init
         id: init
         run: terraform init -input=false
