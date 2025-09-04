@@ -6,10 +6,17 @@ resource "azurerm_key_vault" "key_vault" {
     resource_group_name         = var.rg_name
     tenant_id                   = data.azurerm_client_config.current.tenant_id
     sku_name                    = "standard"
-    purge_protection_enabled    = false
+    purge_protection_enabled    = true
     soft_delete_retention_days  = 7
     enabled_for_disk_encryption = true
     tags                        = var.tags
+
+    network_acls {
+    default_action             = "Deny"
+    bypass                     = "AzureServices"
+    ip_rules                   =  ["10.0.0.0/24"] 
+}
+
     
     access_policy {
         tenant_id = data.azurerm_client_config.current.tenant_id
