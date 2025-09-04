@@ -15,4 +15,19 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
     }
 
     tags = var.tags
+
+     role_based_access_control_enabled = true
+    
+    api_server_access_profile {
+    authorized_ip_ranges = [
+      "10.0.0.0/24"
+    ]
+  }
+    
+    network_profile {
+    network_plugin = "azure"   
+    network_policy = "calico"
+  }
+
 }
+

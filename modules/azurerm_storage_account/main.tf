@@ -5,4 +5,6 @@ resource "azurerm_storage_account" "storage_account" {
     account_tier             = "Standard"
     account_replication_type = "GRS"
     tags                     = var.tags
+    min_tls_version = "TLS1_2"
+
 }
