@@ -22,7 +22,7 @@ module "resource_group" {
 module "container_registry" {
   depends_on = [ module.resource_group ]
   source = "../../modules/azurerm_container_registry"
-  acr_name = "todocontainerregistry"
+  acr_name = "todoacr_01"
   rg_name = "rg-todo-dev"
   location = "East US"
   tags = local.common_tags
