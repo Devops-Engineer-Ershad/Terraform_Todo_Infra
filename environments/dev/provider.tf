@@ -9,15 +9,15 @@ terraform {
     }
 
     backend "azurerm" {
-        resource_group_name  = "rg-ershad"
-        storage_account_name = "ershadstorage"
-        container_name       = "ershadcontainer"
-        key                  = "rg.terraformstate"
+        resource_group_name  = "DoNotDeleteRg"
+        storage_account_name = "donotdeletestorage5555"
+        container_name       = "tfstate"
+        key                  = "dev.terraformstate"
       
     }
 }
 
 provider "azurerm" {
     features {}
-  subscription_id = "52172e85-52db-422d-b74e-9204936ad848"
+  subscription_id = "13dfd1e6-6770-4299-b7ea-6aa09b346468"
 }
