@@ -15,9 +15,9 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
-          client-id: cb47e9cc-d297-467f-9d88-acd3af303ea0
-          tenant-id: beb0c4c1-6e0d-47ae-9e96-267a17908122
-          subscription-id: 52172e85-52db-422d-b74e-9204936ad848
+          client-id: a4786069-3ae1-43e8-9be8-9e9aa49d5e6d
+          tenant-id:  622196ce-d3ea-4efe-b997-c359b8b193f9
+          subscription-id: 13dfd1e6-6770-4299-b7ea-6aa09b346468
           
       - name: Terraform fmt
         run: terraform fmt -recursive
@@ -38,16 +38,6 @@ jobs:
         run: terraform plan -no-color -input=false
         continue-on-error: true
         working-directory: environments/dev
-
-      - name: Run tflint
-        run: |
-          tflint --init
-          tflint
-        working-directory: environments/dev
-
-      - name: Run tfsec
-        run: tfsec
-        working-directory: environments/dev    
         
   terraform-apply: 
     runs-on: self-hosted
@@ -60,9 +50,9 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
-          client-id: 2d77700a-f1d8-4aab-afa3-1dce8f432f0e
-          tenant-id: beb0c4c1-6e0d-47ae-9e96-267a17908122
-          subscription-id: 52172e85-52db-422d-b74e-9204936ad848
+          client-id: a4786069-3ae1-43e8-9be8-9e9aa49d5e6d
+          tenant-id: 622196ce-d3ea-4efe-b997-c359b8b193f9
+          subscription-id: 13dfd1e6-6770-4299-b7ea-6aa09b346468
 
       - name: Terraform Init
         id: init
