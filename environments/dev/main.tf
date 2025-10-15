@@ -38,15 +38,15 @@ module "container_registry" {
  admin_password = "P@ssword1234"
  tags = local.common_tags
  }
-# module "kubernetes_cluster" {
-#   depends_on = [ module.resource_group ]
-#   source = "../../modules/azurerm_kubernetes_cluster"
-#   aks_name = "todoakscluster"
-#   rg_name = "rg-todo-dev"
-#   location = "East US"
-#   dns_prefix = "todoaksdns"
-#   tags = local.common_tags
-# }
+ module "kubernetes_cluster" {
+ depends_on = [ module.resource_group ]
+ source = "../../modules/azurerm_kubernetes_cluster"
+ aks_name = "todoakscluster"
+ rg_name = "rg-todo-dev"
+ location = "East US"
+ dns_prefix = "todoaksdns"
+ tags = local.common_tags
+ }
 # module "key_vault" {
 #   depends_on = [ module.resource_group ]
 #   source = "../../modules/azurerm_key_vault"
