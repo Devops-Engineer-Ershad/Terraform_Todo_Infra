@@ -33,7 +33,7 @@ module "container_registry" {
  source = "../../modules/azurerm_mssql_server"
  sql_server_name = "todosqlserver123"
  rg_name = "rg-todo-dev"
- location = "East US"
+ location = "centralindia"
  admin_username = "sqladminuser"
  admin_password = "P@ssword1234"
  tags = local.common_tags
