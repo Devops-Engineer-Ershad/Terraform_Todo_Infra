@@ -31,7 +31,7 @@ module "container_registry" {
  module "sql_server" {
  depends_on = [ module.resource_group ]
  source = "../../modules/azurerm_mssql_server"
- sql_server_name = "todoserver123"
+ sql_server_name = "todoserverdev"
  rg_name = "rg-todo-dev"
  location = "centralindia"
  admin_username = "sqladminuser"
@@ -58,7 +58,7 @@ module "container_registry" {
    module "sql_database" {
    depends_on = [ module.sql_server ]
    source = "../../modules/azurerm_sql_database"
-   sql_database_name = "tododb123"
+   sql_database_name = "tododbdev"
    server_id = module.sql_server.server_id
    max_size_gb = "2"
    tags = local.common_tags
