@@ -7,7 +7,7 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
     default_node_pool {
         name       = "default"
         node_count = 1
-        vm_size    = "Standard_DS2_v2"
+        vm_size    = "standard_a2m_v2"
     }
 
     identity {
@@ -20,7 +20,7 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
     
     api_server_access_profile {
     authorized_ip_ranges = [
-      "10.0.0.0/24"
+      "10.0.0.0/24" , " 152.58.134.247 /32"
     ]
   }
     
