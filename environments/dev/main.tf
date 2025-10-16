@@ -31,7 +31,7 @@ module "container_registry" {
  module "sql_server" {
  depends_on = [ module.resource_group ]
  source = "../../modules/azurerm_mssql_server"
- sql_server_name = "todosqlserver123"
+ sql_server_name = "todoserver123"
  rg_name = "rg-todo-dev"
  location = "centralindia"
  admin_username = "sqladminuser"
