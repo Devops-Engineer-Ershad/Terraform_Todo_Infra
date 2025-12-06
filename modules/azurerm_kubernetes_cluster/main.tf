@@ -20,7 +20,7 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
     
     api_server_access_profile {
     authorized_ip_ranges = [
-      "10.0.0.0/24" , "152.58.133.47"
+      "10.0.0.0/24" , "152.58.132.71"
     ]
   }
     
