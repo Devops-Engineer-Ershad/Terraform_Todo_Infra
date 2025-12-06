@@ -43,7 +43,7 @@ module "container_registry" {
  source = "../../modules/azurerm_kubernetes_cluster"
  aks_name = "todoakscluster"
  rg_name = "rg-todo-dev"
- location = "East US"
+ location = "centralindia"
  dns_prefix = "todoaksdns"
  tags = local.common_tags
  }
