@@ -10,14 +10,14 @@ terraform {
 
     backend "azurerm" {
         resource_group_name  = "DoNotDeleteRg"
-        storage_account_name = "donotdeletestorage555"
+        storage_account_name = "donotdeletestorage5"
         container_name       = "tfstate"
-        key                  = "dev1.terraformstate"
+        key                  = "dev.terraform.state"
       
     }
 }
 
 provider "azurerm" {
     features {}
-  subscription_id = "c24701f5-28b9-4143-94b8-dfab761abc82"
+  subscription_id = "ff1980ab-1170-4014-971d-df65aabf1e5b"
 }
