@@ -36,7 +36,7 @@ pipeline {
                 dir("${TF_WORKDIR}") {
                     bat 'terraform plan -out=tfplan -input=false'
                     bat 'terraform show -no-color tfplan > tfplan.txt'
-                    archiveArtifacts artifacts: 'Terraform_Todo_Infra/environments/dev/tfplan.txt'
+                    archiveArtifacts artifacts: 'tfplan.txt'
                 }
             }
         }
