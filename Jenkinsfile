@@ -12,7 +12,7 @@ pipeline {
         ARM_SUBSCRIPTION_ID = credentials('az_subscription_id')
 
         // Correct Terraform working directory
-        TF_WORKDIR = 'Terraform_Todo_Infra/environments/dev'
+        TF_WORKDIR = 'environments/dev'
     }
 
     stages {
